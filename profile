@@ -3,6 +3,7 @@ export PATH="/usr/local/mysql/bin:$PATH"
 alias eft3="cd ~/Development/Ruby/eft3"
 alias dbreset='rake db:drop db:create db:migrate db:seed'
 alias jerbs="rake jobs:work"
+alias rspec="bundle exec rspec --color"
 
 function gemo {
  dir=$PWD;

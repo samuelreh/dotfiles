@@ -21,7 +21,10 @@ export ZSH_THEME="cloud"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(rails git ruby)
+
+compctl -k "(br co reviewed delete branch checkout)" gitmine
+alias gm='gitmine'
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
