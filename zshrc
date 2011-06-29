@@ -28,5 +28,3 @@ alias gm='gitmine'
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
