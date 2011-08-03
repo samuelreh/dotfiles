@@ -6,6 +6,7 @@ alias jerbs="rake jobs:work"
 alias rspec="bundle exec rspec --color --format doc"
 alias cuc="bundle exec cucumber"
 alias bs="rake eft3:db:bootstrap"
+alias find_and_replace='perl -p -i -e'
 
 function gemo {
  dir=$PWD;
@@ -17,3 +18,5 @@ function gemo {
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
