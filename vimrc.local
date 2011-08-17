@@ -19,4 +19,6 @@ map <Leader>i 0ela%{<Esc>A}<Esc>0
 
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+map <Leader>l :s/\(\w\+\)\s\+=\s\+\(.\+\)/let(:\1) { \2 }<CR>:nohlsearch<CR>
+
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red

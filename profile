@@ -1,5 +1,6 @@
 export PATH="/usr/local/mysql/bin:$PATH"
 
+alias rake='bundle exec rake'
 alias eft3="cd ~/Development/Ruby/eft3"
 alias dbreset='rake db:drop db:create db:migrate db:seed'
 alias jerbs="rake jobs:work"
