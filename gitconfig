@@ -24,6 +24,9 @@
   fa = fetch --all
   pom = push origin master
 
+[format]
+  pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+
 [color]
   diff = auto
   status = auto
