@@ -21,4 +21,9 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 map <Leader>l :s/\(\w\+\)\s\+=\s\+\(.\+\)/let(:\1) { \2 }<CR>:nohlsearch<CR>
 
+:colorscheme ir_black
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+if has("gui_running")
+  set guioptions-=T
+endif
