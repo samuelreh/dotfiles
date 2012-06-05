@@ -10,6 +10,7 @@ alias bs="rake eft3:db:bootstrap"
 alias find_and_replace='perl -p -i -e'
 alias cis="ruby ~/Development/Ruby/scripts/ci-status.rb"
 alias gm="gitmine"
+alias td="todo.sh"
 
 function gemo {
  dir=$PWD;
