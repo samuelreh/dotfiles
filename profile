@@ -1,16 +1,11 @@
-export PATH="/usr/local/mysql/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
 
 alias be='bundle exec'
-alias eft3="cd ~/Development/Ruby/eft3"
-alias dbreset='be rake db:drop db:create db:migrate db:seed'
-alias jerbs="rake jobs:work"
-alias rspec="bundle exec rspec --color --format doc"
-alias cuc="bundle exec cucumber"
-alias bs="rake eft3:db:bootstrap"
+alias gph='git push heroku master && say "All Done"'
+alias dbr='be rake db:drop db:create db:migrate && say "All Done"'
+alias dbrt='RAILS_ENV=test be rake db:drop db:create db:migrate && say "All Done"'
 alias find_and_replace='perl -p -i -e'
-alias cis="ruby ~/Development/Ruby/scripts/ci-status.rb"
-alias gm="gitmine"
-alias td="todo.sh"
+alias rspec='bundle exec rspec --colour'
 
 function gemo {
  dir=$PWD;
@@ -21,6 +16,10 @@ function gemo {
  cd $dir;
 }
 
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+

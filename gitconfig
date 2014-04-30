@@ -16,7 +16,6 @@
   ra = !git r --all
   ff = merge --ff-only
   pullff = pull --ff-only
-  l = log --graph --abbrev-commit --date=relative 
   la = !git l --all
   div = divergence
   gn = goodness
@@ -54,8 +53,12 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = /Users/samuelreh/.gitignore
+	editor = /usr/bin/vim
 [github]
   user = samuelreh
 
 [push]
   default = tracking
+[url "https://"]
+	insteadOf = git://

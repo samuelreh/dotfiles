@@ -23,8 +23,8 @@ export ZSH_THEME="cloud"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails git ruby)
 
-compctl -k "(br co reviewed delete branch checkout)" gitmine
-alias gm='gitmine'
+compctl -k "(br co reviewed delete branch checkout)"
+bindkey -v
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
