@@ -1,5 +1,10 @@
 --type-set=css=.css
---type-set=sql=.sql
---type-set=ruby=.rb,.haml,.rake,.feature,.sass,.erb,.scss
+--type-set=log=.log
+--type-set=ruby=.rb,.haml,.rake,.feature,.sass,.erb,.scss,.mustache
 --type=nosql
 --type=nocss
+--type=nolog
+--ignore-directory=.tmp
+--ignore-directory=build
+--ignore-directory=components
+--ignore-directory=node_modules

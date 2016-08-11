@@ -1,5 +1,6 @@
 PATH="/usr/local/bin:$PATH"
 
+alias foremang='foreman'
 alias be='bundle exec'
 alias gph='git push heroku master && say "All Done"'
 alias dbr='be rake db:drop db:create db:migrate && say "All Done"'
@@ -19,7 +20,4 @@ function gemo {
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
-
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

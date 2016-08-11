@@ -22,6 +22,7 @@
   gnc = goodness --cached
   fa = fetch --all
   pom = push origin master
+  br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [format]
   pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
@@ -62,3 +63,5 @@
   default = tracking
 [url "https://"]
 	insteadOf = git://
+[url "https://git.heroku.com/"]
+	insteadOf = ssh://git@heroku.com/
