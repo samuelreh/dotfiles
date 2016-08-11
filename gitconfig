@@ -65,3 +65,5 @@
 	insteadOf = git://
 [url "https://git.heroku.com/"]
 	insteadOf = ssh://git@heroku.com/
+[branch]
+	autosetuprebase = always
