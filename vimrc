@@ -4,10 +4,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/Users/samuelreh/.vim/bundle/neobundle.vim/
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('/Users/samuelreh/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -19,7 +19,14 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'mileszs/ack.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'scrooloose/vim-scala'
+" NeoBundle 'xolox/vim-easytags'
+NeoBundle 'xolox/vim-misc' 
+NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'osyo-manga/shabadou.vim'
 
 NeoBundleLazy 'Shougo/unite.vim', {
         \ 'autoload': {
@@ -38,8 +45,10 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+NeoBundle 'Shougo/neocomplete', {'depends': [
+      \ 'Shougo/neoinclude.vim',
+      \ 'Shougo/neco-syntax',
+      \ 'Shougo/neco-vim' ]}
 
 " Required:
 call neobundle#end()
@@ -52,7 +61,7 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
-colorscheme Atom
+colorscheme ir_black
 
 set number
 set linebreak
@@ -82,7 +91,9 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-set guifont=Monaco:h14
+set guifont=Monaco:h12
+
+set clipboard=unnamed
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -105,3 +116,93 @@ nnoremap <leader>re :Unite ref/man ref/hoogle ref/pydoc -default-action=split<Cr
 nnoremap <leader>u :Unite history/command source command<Cr>
 nnoremap <leader>p :Unite process -no-split -buffer-name=process<Cr>
 nnoremap <leader>q :UniteClose build<Cr>
+
+
+" unite-grep
+nnoremap sg :<C-u>Unite grep:. -default-action=split<Cr>
+nnoremap sG :<C-u>execute 'Unite grep:.:-iR:' . expand('<cword>') . ' -default-action=split'<Cr>
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+        \ '-i --vimgrep --hidden --ignore ' .
+        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore tags --ignore target'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+
+" Ctags
+set tags=./.tags,.tags,./tags,tags
+
+
+" Autocompletion
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
