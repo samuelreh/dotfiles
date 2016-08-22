@@ -104,8 +104,8 @@ let mapleader = ","
 
 nnoremap <leader>. :NERDTreeToggle<Cr>
 
-nnoremap <leader>S :Unite file_rec -default-action=split -direction=rightbelow<Cr>
-nnoremap <leader>s :Unite file_rec/git file -default-action=split -direction=rightbelow -hide-source-names<Cr>
+nnoremap <leader>S :Unite file_rec -default-action=split<Cr>
+nnoremap <leader>s :Unite file_rec/git file -default-action=split -hide-source-names<Cr>
 nnoremap <leader>e :Unite file_rec/async<Cr>
 nnoremap <leader>o :Unite outline -auto-preview -buffer-name=outline<Cr>
 nnoremap <leader>c :Unite colorscheme font -auto-preview<Cr>
@@ -116,7 +116,6 @@ nnoremap <leader>re :Unite ref/man ref/hoogle ref/pydoc -default-action=split<Cr
 nnoremap <leader>u :Unite history/command source command<Cr>
 nnoremap <leader>p :Unite process -no-split -buffer-name=process<Cr>
 nnoremap <leader>q :UniteClose build<Cr>
-
 
 " unite-grep
 nnoremap sg :<C-u>Unite grep:. -default-action=split<Cr>
