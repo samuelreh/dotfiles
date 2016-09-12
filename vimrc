@@ -18,13 +18,11 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'scrooloose/vim-scala'
 " NeoBundle 'xolox/vim-easytags'
 NeoBundle 'xolox/vim-misc' 
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'thinca/vim-quickrun'
+" NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'osyo-manga/shabadou.vim'
 
@@ -38,6 +36,9 @@ NeoBundleLazy 'Shougo/unite.vim', {
         \   ],
         \ },
         \ }
+
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'Shougo/vimfiler.vim'
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -102,10 +103,11 @@ map <C-l> <C-w>l
 
 let mapleader = ","
 
-nnoremap <leader>. :NERDTreeToggle<Cr>
+nnoremap <leader>. :VimFilerExplorer -auto-expand<Cr>
+let g:vimfiler_as_default_explorer = 1
 
-nnoremap <leader>S :Unite file_rec -default-action=split -direction=rightbelow<Cr>
-nnoremap <leader>s :Unite file_rec/git file -default-action=split -direction=rightbelow -hide-source-names<Cr>
+nnoremap <leader>S :Unite file_rec -default-action=split<Cr>
+nnoremap <leader>s :Unite file_rec/git file -default-action=split -hide-source-names<Cr>
 nnoremap <leader>e :Unite file_rec/async<Cr>
 nnoremap <leader>o :Unite outline -auto-preview -buffer-name=outline<Cr>
 nnoremap <leader>c :Unite colorscheme font -auto-preview<Cr>
