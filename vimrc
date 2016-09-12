@@ -119,7 +119,6 @@ nnoremap <leader>u :Unite history/command source command<Cr>
 nnoremap <leader>p :Unite process -no-split -buffer-name=process<Cr>
 nnoremap <leader>q :UniteClose build<Cr>
 
-
 " unite-grep
 nnoremap sg :<C-u>Unite grep:. -default-action=split<Cr>
 nnoremap sG :<C-u>execute 'Unite grep:.:-iR:' . expand('<cword>') . ' -default-action=split'<Cr>
