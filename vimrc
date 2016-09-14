@@ -104,7 +104,7 @@ map <C-l> <C-w>l
 
 let mapleader = ","
 
-nnoremap <leader>. :VimFilerExplorer -auto-expand<Cr>
+nnoremap <leader>. :VimFilerExplorer -auto-expand -split -winwidth=55<Cr>
 let g:vimfiler_as_default_explorer = 1
 let g:choosewin_overlay_enable = 1
 
