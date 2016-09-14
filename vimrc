@@ -39,6 +39,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
 
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 't9md/vim-choosewin'
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -105,6 +106,7 @@ let mapleader = ","
 
 nnoremap <leader>. :VimFilerExplorer -auto-expand<Cr>
 let g:vimfiler_as_default_explorer = 1
+let g:choosewin_overlay_enable = 1
 
 nnoremap <leader>S :Unite file_rec -default-action=split<Cr>
 nnoremap <leader>s :Unite file_rec/git file -default-action=split -hide-source-names<Cr>
