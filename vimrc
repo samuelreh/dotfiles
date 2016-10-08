@@ -19,26 +19,13 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'scrooloose/vim-scala'
-" NeoBundle 'xolox/vim-easytags'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'xolox/vim-misc' 
-" NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'osyo-manga/shabadou.vim'
-
-NeoBundleLazy 'Shougo/unite.vim', {
-        \ 'autoload': {
-        \   'commands': [
-        \     'Unite',
-        \     'UniteWithBufferDir',
-        \     'UniteWithCurrentDir',
-        \     'UniteWithProjectDir',
-        \   ],
-        \ },
-        \ }
-
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 't9md/vim-choosewin'
 
 NeoBundle 'Shougo/vimproc.vim', {
@@ -51,6 +38,8 @@ NeoBundle 'Shougo/neocomplete', {'depends': [
       \ 'Shougo/neoinclude.vim',
       \ 'Shougo/neco-syntax',
       \ 'Shougo/neco-vim' ]}
+
+NeoBundle 'Shougo/vimfiler.vim'
 
 " Required:
 call neobundle#end()
