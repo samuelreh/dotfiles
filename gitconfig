@@ -1,5 +1,5 @@
 [user]
-	name = Sam Reh
+  name = Sam Reh
   email = samuelreh@gmail.com
 
 [alias]
@@ -54,16 +54,16 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/samuelreh/.gitignore
+	excludesfile = /Users/samre/.gitignore
 	editor = /usr/bin/vim
 [github]
   user = samuelreh
 
 [push]
-  default = tracking
+	default = current
 [url "https://"]
-	insteadOf = git://
+  insteadOf = git://
 [url "https://git.heroku.com/"]
-	insteadOf = ssh://git@heroku.com/
+  insteadOf = ssh://git@heroku.com/
 [branch]
 	autosetuprebase = always

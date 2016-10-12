@@ -40,6 +40,7 @@ NeoBundle 'Shougo/neocomplete', {'depends': [
       \ 'Shougo/neco-vim' ]}
 
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'scrooloose/syntastic'
 
 " Required:
 call neobundle#end()
@@ -198,3 +199,15 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+"" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
