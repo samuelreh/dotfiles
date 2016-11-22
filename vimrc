@@ -41,6 +41,8 @@ NeoBundle 'Shougo/neocomplete', {'depends': [
 
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'ensime/ensime-vim'
 
 " Required:
 call neobundle#end()
@@ -94,7 +96,7 @@ map <C-l> <C-w>l
 
 let mapleader = ","
 
-nnoremap <leader>. :VimFilerExplorer -auto-expand -split -winwidth=55<Cr>
+nnoremap <leader>. :VimFilerExplorer -auto-expand -split -winwidth=30<Cr>
 let g:vimfiler_as_default_explorer = 1
 let g:choosewin_overlay_enable = 1
 
