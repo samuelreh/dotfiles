@@ -104,14 +104,17 @@ nnoremap <leader>S :Unite file_rec -default-action=split<Cr>
 nnoremap <leader>s :Unite file_rec/git file -default-action=split -hide-source-names<Cr>
 nnoremap <leader>e :Unite file_rec/async<Cr>
 nnoremap <leader>o :Unite outline -auto-preview -buffer-name=outline<Cr>
-nnoremap <leader>c :Unite colorscheme font -auto-preview<Cr>
 nnoremap <leader>f :UniteWithBufferDir file_rec -default-action=split<Cr>
 nnoremap <leader>m :Unite file_mru -default-action=split<Cr>
 nnoremap <leader>b :Unite buffer -default-action=split<Cr>
 nnoremap <leader>re :Unite ref/man ref/hoogle ref/pydoc -default-action=split<Cr>
 nnoremap <leader>u :Unite history/command source command<Cr>
-nnoremap <leader>p :Unite process -no-split -buffer-name=process<Cr>
 nnoremap <leader>q :UniteClose build<Cr>
+
+nnoremap <leader>t :EnInspectType<Cr>
+nnoremap <leader>T :EnType<Cr>
+nnoremap <leader>p :TypeCheck<Cr>
+nnoremap <leader>] :EnDeclaration<Cr>
 
 " unite-grep
 nnoremap sg :<C-u>Unite grep:. -default-action=split<Cr>
