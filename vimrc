@@ -97,24 +97,26 @@ map <C-l> <C-w>l
 let mapleader = ","
 
 nnoremap <leader>. :VimFilerExplorer -auto-expand -split -winwidth=30<Cr>
-let g:vimfiler_as_default_explorer = 1
-let g:choosewin_overlay_enable = 1
+let g:vimfiler_as_default_explorer = 0
+let g:choosewin_overlay_enable = 0
 
 nnoremap <leader>S :Unite file_rec -default-action=split<Cr>
 nnoremap <leader>s :Unite file_rec/git file -default-action=split -hide-source-names<Cr>
-nnoremap <leader>e :Unite file_rec/async<Cr>
+nnoremap <leader>f :Unite file_rec/async<Cr>
 nnoremap <leader>o :Unite outline -auto-preview -buffer-name=outline<Cr>
-nnoremap <leader>f :UniteWithBufferDir file_rec -default-action=split<Cr>
+nnoremap <leader>e :UniteWithBufferDir file_rec -default-action=split<Cr>
 nnoremap <leader>m :Unite file_mru -default-action=split<Cr>
 nnoremap <leader>b :Unite buffer -default-action=split<Cr>
 nnoremap <leader>re :Unite ref/man ref/hoogle ref/pydoc -default-action=split<Cr>
 nnoremap <leader>u :Unite history/command source command<Cr>
 nnoremap <leader>q :UniteClose build<Cr>
 
-nnoremap <leader>t :EnInspectType<Cr>
-nnoremap <leader>T :EnType<Cr>
-nnoremap <leader>p :TypeCheck<Cr>
-nnoremap <leader>] :EnDeclaration<Cr>
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  nnoremap <buffer> <esc> <plug>(unite_exit)
+  nnoremap <buffer> <C-j> <plug>(unite_toggle_auto_preview)
+endfunction
+
 
 " unite-grep
 nnoremap sg :<C-u>Unite grep:. -default-action=split<Cr>
@@ -128,6 +130,14 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+inoremap <silent><buffer><expr> <C-s>     unite#do_action('split')
+inoremap <silent><buffer><expr> <C-v>     unite#do_action('vsplit')
+    
+
+nnoremap <leader>t :EnInspectType<Cr>
+nnoremap <leader>T :EnType<Cr>
+nnoremap <leader>p :EnTypeCheck<Cr>
+nnoremap <leader>] :EnDeclaration<Cr>
 
 " Ctags
 set tags=./.tags,.tags,./tags,tags
