@@ -9,3 +9,4 @@ call SpaceVim#mapping#def('nnoremap <silent>', '<Tab>', '<Tab>', 'Undo mapping',
 
 let g:spacevim_colorscheme = 'jellybeans'
 
+set tags=./.tags,.tags,./tags,tags
