@@ -10,3 +10,11 @@ call SpaceVim#mapping#def('nnoremap <silent>', '<Tab>', '<Tab>', 'Undo mapping',
 let g:spacevim_colorscheme = 'jellybeans'
 
 set tags=./.tags,.tags,./tags,tags
+
+let g:indentLine_enabled = get(g:, 'indentLine_enabled', 0)
+let g:spacevim_relativenumber = 0
+
+set tabstop     =2
+set softtabstop =2
+set shiftwidth  =2
+set expandtab
