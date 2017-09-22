@@ -5,6 +5,7 @@ let g:spacevim_statusline_inactive_separator = 'bar'
 let g:spacevim_buffer_index_type = 4
 let g:spacevim_enable_tabline_filetype_icon = 0
 
+" Remove tab mapping of navigation
 call SpaceVim#mapping#def('nnoremap <silent>', '<Tab>', '<Tab>', 'Undo mapping','wincmd w')
 
 let g:spacevim_colorscheme = 'jellybeans'
@@ -14,7 +15,15 @@ set tags=./.tags,.tags,./tags,tags
 let g:indentLine_enabled = get(g:, 'indentLine_enabled', 0)
 let g:spacevim_relativenumber = 0
 
-set tabstop     =2
-set softtabstop =2
-set shiftwidth  =2
+filetype plugin indent on
+
+set guifont=Fira\ Code:h12
+
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set expandtab
+
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype php setlocal ts=4 sw=4 sts=0 expandtab
