@@ -13,7 +13,6 @@ let g:spacevim_colorscheme = 'jellybeans'
 set tags=./.tags,.tags,./tags,tags
 
 let g:indentLine_enabled = get(g:, 'indentLine_enabled', 0)
-let g:spacevim_relativenumber = 0
 
 filetype plugin indent on
 
@@ -27,3 +26,9 @@ set expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype php setlocal ts=4 sw=4 sts=0 expandtab
+
+e" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
