@@ -1,0 +1,12 @@
+*.swp
+*.swo
+.tags
+tags
+
+.DS_STORE
+
+.ensime
+.ensime_cache
+.#*
+
+.watchmanconfig
