@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="cloud"
+export ZSH_THEME="zhann"
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
@@ -21,10 +21,14 @@ export ZSH_THEME="cloud"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby)
+plugins=(rails git ruby vi-mode)
+
+eval "$(rbenv init -)"
 
 compctl -k "(br co reviewed delete branch checkout)"
-bindkey -v
 
-source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"

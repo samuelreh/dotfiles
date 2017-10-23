@@ -54,7 +54,7 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/samre/.gitignore
+	excludesfile = /Users/sam.reh/.gitignore
 	editor = /usr/bin/vim
 [github]
   user = samuelreh
