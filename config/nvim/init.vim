@@ -22,6 +22,16 @@ call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--
 nnoremap <silent> fi :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
 nnoremap <silent> fb :<C-u>Denite buffer<CR>
 
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+nnoremap <silent> fg :<C-u>Denite grep<CR>
+nnoremap <silent> fs :<C-u>DeniteCursorWord grep<CR>
+
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
 " Tags tags tags
