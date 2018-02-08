@@ -1,3 +1,5 @@
+let g:python3_host_prog = '/usr/local/var/pyenv/versions/3.5.2/bin/python'
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
@@ -61,6 +63,11 @@ set relativenumber             " Show relative line numbers
 
 " Keep buffer open
 set hidden
+
+" Tree
+let g:netrw_banner=0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
+autocmd FileType netrw set nolist
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
