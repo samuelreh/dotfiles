@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="cloud"
+export ZSH_THEME="zhann"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -29,10 +29,10 @@ export ZSH_THEME="cloud"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby)
+plugins=(rails git ruby vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-# source $HOME/.bin/tmuxinator.zsh
+eval "$(rbenv init -)"
+
 bindkey -v
 bindkey "^R" history-incremental-search-backward
 
@@ -40,16 +40,11 @@ bindkey "^R" history-incremental-search-backward
 export PATH=$PATH:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/Development/adt-bundle-mac-x86_64-20140702/sdk/tools
-PATH=$PATH:$HOME/Development/adt-bundle-mac-x86_64-20140702/sdk/platform-tools
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 eval `/usr/libexec/path_helper -s`
-
-export NVM_DIR="/Users/samuelreh/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 source /usr/local/share/zsh/site-functions/_aws
 
@@ -63,3 +58,11 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 alias edit=nvim
 alias today="vimr ~/Drive/Notes/$(date +'%m-%d-%Y').txt"
+
+compctl -k "(br co reviewed delete branch checkout)"
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
