@@ -21,7 +21,7 @@ export ZSH_THEME="zhann"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby vi-mode)
+plugins=(git ruby vi-mode)
 
 eval "$(rbenv init -)"
 
