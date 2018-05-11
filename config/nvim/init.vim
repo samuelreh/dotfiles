@@ -39,6 +39,8 @@ call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_pro
 " Tags tags tags
 set tags=./.tags,.tags,./tags,tags
 
+set autoread
+
 " Spaces > Tabs
 filetype plugin indent on
 
@@ -65,9 +67,14 @@ set relativenumber             " Show relative line numbers
 set hidden
 
 " Tree
+let g:netrw_keepdir=0
 let g:netrw_banner=0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
 autocmd FileType netrw set nolist
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
+nnoremap <F5> "=strftime("%b %d, %Y")<CR>P
+
+command! CDPWD cd %:p:h
