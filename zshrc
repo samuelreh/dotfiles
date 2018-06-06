@@ -31,7 +31,9 @@ export ZSH_THEME="zhann"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails git ruby vi-mode)
 
-eval "$(rbenv init -)"
+if hash rbenv 2>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 bindkey -v
 bindkey "^R" history-incremental-search-backward
@@ -51,13 +53,13 @@ source /usr/local/share/zsh/site-functions/_aws
 export GOPATH=/Users/samuelreh/Development/go/
 export PATH=$GOPATH/bin:$PATH
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export PYENV_ROOT="/usr/local/var/pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 alias edit=nvim
-alias today="vimr ~/Drive/Notes/$(date +'%m-%d-%Y').txt"
+alias today='vimr ~/Drive/Notes/$(date +'%m-%d-%Y').txt'
 
 compctl -k "(br co reviewed delete branch checkout)"
 
