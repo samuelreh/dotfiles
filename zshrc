@@ -66,5 +66,7 @@ compctl -k "(br co reviewed delete branch checkout)"
 source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh

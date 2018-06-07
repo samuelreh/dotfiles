@@ -7,6 +7,8 @@ Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neomru.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'padde/jump.vim'
+Plug 'airblade/vim-rooter'
 
 " Completion
 Plug 'Shougo/deoplete.nvim'
