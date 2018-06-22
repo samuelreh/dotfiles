@@ -77,6 +77,11 @@ autocmd FileType netrw set nolist
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
-nnoremap <F5> "=strftime("%b %d, %Y")<CR>P
+nnoremap <F5> "=strftime("%A, %b %d, %Y")<CR>P
 
 command! CDPWD cd %:p:h
+
+augroup markdownSpell
+    autocmd!
+    autocmd FileType md,markdown,txt setlocal spell
+augroup END

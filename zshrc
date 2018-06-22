@@ -50,7 +50,7 @@ eval `/usr/libexec/path_helper -s`
 
 source /usr/local/share/zsh/site-functions/_aws
 
-export GOPATH=/Users/samuelreh/Development/go/
+export GOPATH=~/Development/go/
 export PATH=$GOPATH/bin:$PATH
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -69,4 +69,6 @@ source $HOME/.profile
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 export NVM_DIR="$HOME/.nvm"
+
 [ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
+export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
