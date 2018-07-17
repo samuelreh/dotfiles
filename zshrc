@@ -61,6 +61,14 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 alias edit=nvim
 alias today='vimr ~/Drive/Notes/$(date +'%m-%d-%Y').txt'
 
+function kpodnames() {
+  kubectl get pods --selector=app=$1 -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'
+}
+
+function kpf() {
+  kubectl port-forward $(kpodnames $1 | head -1) $2
+}
+
 compctl -k "(br co reviewed delete branch checkout)"
 
 source $ZSH/oh-my-zsh.sh

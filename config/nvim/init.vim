@@ -25,6 +25,7 @@ call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 nnoremap <silent> fi :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
 nnoremap <silent> fb :<C-u>Denite buffer<CR>
+nnoremap <silent> ff :<C-u>Denite file_rec<CR>
 
 " Ripgrep command on grep source
 call denite#custom#var('grep', 'command', ['rg'])
