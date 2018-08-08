@@ -80,3 +80,9 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/samuelreh/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
