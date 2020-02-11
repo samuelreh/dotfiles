@@ -50,10 +50,7 @@ eval `/usr/libexec/path_helper -s`
 
 source /usr/local/share/zsh/site-functions/_aws
 
-export GOPATH=~/Development/go/
 export PATH=$GOPATH/bin:$PATH
-
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export PYENV_ROOT="/usr/local/var/pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -86,3 +83,4 @@ if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then sourc
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/gettext/bin:$PATH"

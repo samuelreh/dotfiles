@@ -68,3 +68,5 @@
   insteadOf = ssh://git@heroku.com/
 [branch]
 	autosetuprebase = always
+[credential]
+	helper = osxkeychain
