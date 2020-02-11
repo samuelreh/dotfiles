@@ -1,6 +1,6 @@
 [user]
-  name = Sam Reh
-  email = samuelreh@gmail.com
+	name = Sam Reh
+	email = samuel@clir.eco
 
 [alias]
   st = status
@@ -70,3 +70,5 @@
 	autosetuprebase = always
 [credential]
 	helper = osxkeychain
+[pull]
+	rebase = true
