@@ -5,8 +5,10 @@ tags
 
 .DS_STORE
 
-.ensime
-.ensime_cache
-.#*
+**/pyrightconfig.json
+pyrightconfig.json
 
-.watchmanconfig
+.vim
+.mypy_cache
+
+scratch/

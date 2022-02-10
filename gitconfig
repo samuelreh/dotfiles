@@ -1,6 +1,6 @@
 [user]
-  name = Sam Reh
-  email = samuelreh@gmail.com
+	name = Sam Reh
+	email = samuel@clir.eco
 
 [alias]
   st = status
@@ -55,8 +55,9 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/sam.reh/.gitignore
-	editor = /usr/bin/vim
+	excludesFile = ~/.gitignore
+	editor = /usr/local/bin/nvim
+	autocrlf = false
 [github]
   user = samuelreh
 
@@ -70,3 +71,5 @@
 	autosetuprebase = always
 [credential]
 	helper = osxkeychain
+[pull]
+	rebase = true
