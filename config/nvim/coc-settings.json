@@ -1,0 +1,16 @@
+{
+  "coc.preferences.hoverTarget": "echo",
+  "signature.target": "echo",
+  "coc.preferences.rootPatterns": [
+    "requirements.txt"
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "javascript.validate.enable": false,
+  "eslint.options": {"configFile": "/Users/samuelreh/Development/TheClarityProject/clir/src/clirweb/app/frontend/.eslintrc"},
+  "python.formatting.provider": "black",
+  "python.linting.mypyEnabled": true,
+  "python.setLinter": "flake8",
+  "python.upgradePythonLanguageServer": true,
+  "pyright.enable": true,
+  "python.pythonPath": "/Users/samuelreh/.config/coc/activator"
+}
