@@ -2,18 +2,6 @@
 
 Personal dotfiles for macOS development environment. Manages shell configuration, git settings, and Neovim setup.
 
-## Contents
-
-| File / Directory | Description |
-|---|---|
-| `zshrc` | Zsh shell configuration (Oh My Zsh, plugins, aliases, PATH) |
-| `gitconfig` | Git configuration (aliases, colors, editor, push/pull behavior) |
-| `gitignore` | Global gitignore patterns |
-| `profile` | Shared shell profile (PATH, aliases) |
-| `config/nvim/init.vim` | Neovim configuration (plugins, keybindings, editor settings) |
-| `config/nvim/coc-settings.json` | CoC (Conquer of Completion) language server settings |
-| `install.sh` | Installation script that symlinks dotfiles into `$HOME` |
-
 ## Installation
 
 ```sh
