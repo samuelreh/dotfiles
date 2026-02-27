@@ -2,20 +2,6 @@
 
 Personal dotfiles for macOS development environment. Manages shell configuration, git settings, and Neovim setup.
 
-## Installation
-
-```sh
-git clone https://github.com/samuelreh/dotfiles.git
-cd dotfiles
-./install.sh
-```
-
-The install script iterates over each file in the repository and either:
-- **Symlinks** it to `~/.<filename>` (e.g., `zshrc` -> `~/.zshrc`)
-- **Copies** it if the file contains a `DO NOT EDIT BELOW THIS LINE` marker, preserving any user content above that line
-
-If a target file already exists and isn't a symlink, the script will attempt to merge using the cut-line marker. Otherwise it warns and skips.
-
 ## Shell (Zsh)
 
 Uses [Oh My Zsh](https://ohmyz.sh/) with the `zhann` theme.
