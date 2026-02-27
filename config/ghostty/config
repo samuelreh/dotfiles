@@ -1,3 +1,4 @@
 font-family = FiraCode Nerd Font Light
 font-size = 12.5
 macos-option-as-alt = true
+theme = Catppuccin Mocha
