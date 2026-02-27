@@ -1,38 +1,53 @@
 # Dotfiles
 
-Personal dotfiles for macOS development environment. Manages shell configuration, git settings, and Neovim setup.
+Personal dotfiles for macOS development environment. Manages shell, git, Neovim, tmux, and terminal configuration.
 
 ## Table of Contents
 
+- [Installation](#installation)
 - [Shell (Zsh)](#shell-zsh)
 - [Git](#git)
 - [Neovim](#neovim)
+- [Tmux](#tmux)
+- [Ghostty](#ghostty)
 - [Prerequisites](#prerequisites)
+
+## Installation
+
+```bash
+git clone https://github.com/samuelreh/dotfiles.git
+cd dotfiles
+./install.sh
+```
+
+The install script symlinks dotfiles to `~/.<name>` and config directories to `~/.config/<name>`. Existing files are backed up with a `.bak` suffix.
+
+**Symlinked files:** `gitconfig`, `gitignore`, `zshrc`, `zprofile`, `tmux.conf`
+
+**Symlinked config dirs:** `nvim`, `ghostty`
 
 ## Shell (Zsh)
 
-Uses [Oh My Zsh](https://ohmyz.sh/) with the `zhann` theme.
+Uses [Oh My Zsh](https://ohmyz.sh/) with a minimal custom prompt (`cyan dir + yellow ✗`).
 
-**Plugins:** `git`, `ruby`, `vi-mode`
+**Plugins:** `git`
 
-**Key bindings:**
-- Vi mode enabled (`bindkey -v`)
-- `Ctrl+R` for reverse history search
+**Key features:**
+- Vi mode enabled (`set -o vi`)
+- [fzf](https://github.com/junegunn/fzf) integration for fuzzy file finding and completion
+- [direnv](https://direnv.net/) for per-directory environment variables
+- Auto-starts [tmux](https://github.com/tmux/tmux) on shell launch (attaches to `main` session)
 
-**Aliases:**
-- `edit` -> `nvim`
-- `today` -> Opens a dated notes file in VimR
-- `find_and_replace` -> Perl in-place find/replace (from `profile`)
+**Language managers:** rbenv (Ruby)
 
-**Helper functions:**
-- `kpodnames <app>` - List Kubernetes pod names for a given app selector
-- `kpf <app> <port>` - Port-forward to the first pod of a given app
+**PATH additions:** `~/.local/bin`, PostgreSQL 16, Node.js 24, `.dotnet`
 
-**Language managers:** rbenv, pyenv, nvm
-
-**Tools:** Heroku CLI, Google Cloud SDK, autojump
+**Custom function:**
+- `wt` — Shell wrapper for the `worktree` CLI with `cd` integration for `switch`, `new`, and `add` subcommands
 
 ## Git
+
+**Signing:** SSH key signing via 1Password (`op-ssh-sign`)
 
 **Aliases:**
 
@@ -59,69 +74,109 @@ Uses [Oh My Zsh](https://ohmyz.sh/) with the `zhann` theme.
 - Push default: current branch
 - Pull: always rebase
 - Auto-setup rebase on new branches
-- URLs: rewrites `git://` to `https://`
-- Credentials: macOS Keychain
+- Credentials: macOS Keychain (via 1Password SSH signing)
+- Git LFS enabled
 
 **Global gitignore:** `.swp`, `.swo`, `.tags`, `tags`, `.DS_STORE`, `pyrightconfig.json`, `.vim`, `.mypy_cache`, `scratch/`
 
 ## Neovim
 
-Uses [vim-plug](https://github.com/junegunn/vim-plug) for plugin management.
+Uses [LazyVim](https://www.lazyvim.org/) with [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
+
+**Color scheme:** [Catppuccin Mocha](https://github.com/catppuccin/nvim) with custom subtle diff highlights
+
+**LazyVim extras:** mini-diff, dotnet, git, ruby, svelte, toml, yaml
 
 **Plugins:**
 
 | Plugin | Purpose |
 |---|---|
-| jellybeans.vim | Color scheme |
-| denite.nvim | Fuzzy finder / search interface |
-| neomru.vim | Most recently used files for Denite |
-| vim-gitgutter | Git diff markers in the gutter |
-| vim-fugitive | Git integration |
-| jump.vim | Quick file jumping |
-| coc.nvim | Intellisense / language server client |
-| far.vim | Find and replace across files |
-| yats.vim | TypeScript syntax highlighting |
-| vim-ripgrep | Ripgrep integration |
-| defx.nvim | File explorer |
-| vim-go | Go development |
-| vim-prettier | Code formatting (JS, TS, CSS, JSON, etc.) |
-| vim-airline | Status line |
-| SimpylFold | Python code folding |
+| catppuccin/nvim | Catppuccin Mocha color scheme |
+| sindrets/diffview.nvim | Side-by-side git diff viewer and file history |
+| christoomey/vim-tmux-navigator | Seamless `C-h/j/k/l` navigation between vim and tmux panes |
+| folke/snacks.nvim | Picker with grep word under cursor (`<leader>*`) |
+| neovim/nvim-lspconfig | LSP configuration (Ruby LSP via rbenv) |
+| stevearc/conform.nvim | Formatting (rubocop via rbenv) |
+| mfussenegger/nvim-lint | Linting (rubocop, erb_lint via rbenv) |
+
+**Disabled plugins:** `noice.nvim` (to fix `:!` command escape codes), `telescope.nvim` (replaced by snacks picker)
+
+**Custom keymaps:**
+
+| Mapping | Action |
+|---|---|
+| `<C-w>\|` | Vertical split |
+| `<C-w>-` | Horizontal split |
+| `<leader>gd` | Open diffview |
+| `<leader>gD` | Close diffview |
+| `<leader>gh` | File history (current file) |
+| `<leader>gH` | File history (all files) |
+| `<leader>gm` | Diff against origin/main merge-base |
+| `<leader>*` | Grep word under cursor |
+| `<C-h/j/k/l>` | Navigate between vim/tmux panes |
+
+**Custom commands:**
+- `:Dv [args]` — Shorthand for `:DiffviewOpen`
+
+**Options:**
+- Auto-formatting disabled on save
+- Shell set to `/bin/zsh` (non-interactive, avoids fzf/oh-my-zsh escape codes)
+- rbenv shims prepended to PATH for Mason compatibility
+- Ruby tools (ruby-lsp, rubocop, erb_lint) bypass Mason and use rbenv-managed gems directly
+
+## Tmux
+
+Prefix key: `C-a`
 
 **Key bindings:**
 
 | Mapping | Action |
 |---|---|
-| `fi` | Find files (git-aware) |
-| `fm` | Find most recently used files |
-| `fb` | Find buffers |
-| `ff` | Find files (recursive) |
-| `fg` | Grep (via Denite + ripgrep) |
-| `fs` | Grep word under cursor |
-| `<leader>-` | Toggle Defx file explorer (vertical split) |
-| `<leader>fr` | Global find and replace |
-| `<space>` | Toggle fold (normal) / Create fold (visual) |
-| `gd` | Go to definition (CoC) |
-| `gy` | Go to type definition (CoC) |
-| `gi` | Go to implementation (CoC) |
-| `gr` | Go to references (CoC) |
-| `[g` / `]g` | Previous / next diagnostic (CoC) |
-| `F5` | Insert current date |
+| `prefix + h/j/k/l` | Navigate panes (vim-style) |
+| `Shift-Left/Right` or `M-h/l` | Switch windows |
+| `prefix + \|` | Vertical split (in current path) |
+| `prefix + -` | Horizontal split (in current path) |
+| `prefix + q` | Kill pane |
+| `prefix + r` | Reload tmux config |
+| `C-h/j/k/l` | Seamless vim/tmux pane navigation |
 
-**Editor settings:**
-- 2-space indentation (4 spaces for Python)
-- Spaces over tabs
-- Relative line numbers
-- System clipboard integration
-- Smart case search with highlighting
+**Copy mode (vi):**
+- `v` to start selection, `C-v` for rectangle toggle, `y` to yank (copies to macOS clipboard)
 
-**CoC extensions:** `coc-solargraph` (Ruby), Pyright (Python), ESLint, Black (Python formatter)
+**Settings:**
+- Mouse enabled
+- Vi mode keys
+- 1-indexed windows and panes with auto-renumbering
+- Bells/activity notifications disabled
+
+**Theme:** [Catppuccin Mocha](https://github.com/catppuccin/tmux) with rounded window status style
+
+**Plugins (via [TPM](https://github.com/tmux-plugins/tpm)):**
+- `tmux-sensible` — Sensible defaults
+- `tmux-yank` — System clipboard integration
+- `catppuccin/tmux` — Theme
+
+**Terminal:** True color (`tmux-256color`) with extended keys support for Ghostty and xterm-256color
+
+## Ghostty
+
+[Ghostty](https://ghostty.org/) terminal emulator configuration:
+
+- **Font:** FiraCode Nerd Font Light, size 12.5
+- **Theme:** Catppuccin Mocha
+- **macOS:** Option key acts as Alt
 
 ## Prerequisites
 
-- macOS
+- macOS (Apple Silicon / Homebrew in `/opt/homebrew`)
 - [Oh My Zsh](https://ohmyz.sh/)
 - [Neovim](https://neovim.io/)
-- [vim-plug](https://github.com/junegunn/vim-plug)
-- [ripgrep](https://github.com/BurntAnalytics/ripgrep) (used by Denite and vim-ripgrep)
-- [Node.js](https://nodejs.org/) (required by CoC)
+- [Ghostty](https://ghostty.org/)
+- [tmux](https://github.com/tmux/tmux) + [TPM](https://github.com/tmux-plugins/tpm)
+- [rbenv](https://github.com/rbenv/rbenv)
+- [fzf](https://github.com/junegunn/fzf)
+- [direnv](https://direnv.net/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Node.js](https://nodejs.org/) (required by LazyVim)
+- [1Password](https://1password.com/) (for SSH key signing)
+- [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
