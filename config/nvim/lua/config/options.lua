@@ -9,5 +9,5 @@ vim.g.autoformat = false
 vim.o.shell = "/bin/zsh"
 vim.o.shellcmdflag = "-c"
 
--- Prepend rbenv shims to PATH so Mason uses the correct Ruby version
-vim.env.PATH = vim.fn.expand("~/.rbenv/shims") .. ":" .. vim.env.PATH
+-- Prepend mise shims to PATH so Mason uses the correct runtime versions
+vim.env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. vim.env.PATH
