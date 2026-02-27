@@ -155,6 +155,42 @@ Prefix key: `C-a`
 - **Theme:** Catppuccin Mocha
 - **macOS:** Option key acts as Alt
 
+## Planned Work
+
+Recommendations for additional plugins and configurations to consider.
+
+### Shell
+
+- **[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)** — Fish-like inline suggestions from command history as you type. Pairs well with the existing fzf integration.
+- **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)** — Real-time command syntax highlighting in the terminal. Helps catch typos before hitting enter.
+- **[zoxide](https://github.com/ajeetdsouza/zoxide)** — Smarter `cd` that learns your most-visited directories. Much faster than typing full paths or using `cd -`.
+- **[Starship](https://starship.rs/)** — Cross-shell prompt with git status, language versions, and command duration built in. Could replace the custom Oh My Zsh prompt with richer info.
+
+### Neovim
+
+- **[nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)** — Select, move, and swap functions/classes/arguments using treesitter-aware text objects (e.g., `vaf` to select a function, `]m` to jump to next method).
+- **[flash.nvim](https://github.com/folke/flash.nvim)** — Enhanced motion plugin for jumping anywhere on screen with minimal keystrokes. LazyVim extra available.
+- **[nvim-dap](https://github.com/mfussenegger/nvim-dap)** — Debug Adapter Protocol client for step-through debugging directly in Neovim. LazyVim extra available for Ruby and other languages.
+- **[copilot.vim](https://github.com/zbirenbaum/copilot.lua)** or **[codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim)** — AI code completion and chat within Neovim. LazyVim extras available for Copilot.
+- **[todo-comments.nvim](https://github.com/folke/todo-comments.nvim)** — Highlight and search TODO/FIXME/HACK comments across the project. LazyVim extra available.
+- **[trouble.nvim](https://github.com/folke/trouble.nvim)** — Pretty diagnostics list for navigating errors, warnings, and LSP references in a unified panel.
+
+### Tmux
+
+- **[tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)** — Save and restore tmux sessions (windows, panes, layouts) across system restarts. No more rebuilding your workspace after a reboot.
+- **[tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)** — Continuous auto-saving of tmux sessions. Works with tmux-resurrect for fully automatic session persistence.
+- **[tmux-fzf](https://github.com/sainnhe/tmux-fzf)** — Fuzzy-find tmux sessions, windows, panes, and commands. Natural fit with the existing fzf setup.
+
+### Git
+
+- **[delta](https://github.com/dandavtez/delta)** — Syntax-highlighted, side-by-side diffs in the terminal with line numbers. Drop-in replacement for the default git pager.
+- **[git-absorb](https://github.com/tummychow/git-absorb)** — Automatically fixup staged changes into the correct prior commits during interactive rebases. Great for keeping commit history clean.
+
+### General
+
+- **[Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle)** — Add a `Brewfile` to version-control all Homebrew dependencies (fzf, ripgrep, direnv, neovim, etc.) so the full environment can be reproduced with `brew bundle`.
+- **[mise](https://mise.jdx.dev/)** — Unified runtime version manager that can replace rbenv (and handle Node.js, Python, Go, etc.) with a single tool and `.mise.toml` config per project.
+
 ## Prerequisites
 
 - macOS (Apple Silicon / Homebrew in `/opt/homebrew`)
