@@ -1,87 +1,167 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-export ZSH_THEME="zhann"
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=""
+PROMPT='%F{cyan}%1~%f %B%F{yellow}✗%f%b '
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/Users/samreh/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+set -o vi
 
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+eval "$(rbenv init - zsh)"
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+# fzf shell integration (Homebrew)
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+source /opt/homebrew/opt/fzf/shell/completion.zsh
+export PGGSSENCMODE=disable  # Fix for Ruby 3.4.1 + PostgreSQL + macOS Kerberos crash
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+export LDFLAGS="-L/opt/homebrew/opt/node@24/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/node@24/include"
+eval "$(direnv hook zsh)"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby vi-mode)
+wt() {
+  local cmd="${1:-}"
 
-if hash rbenv 2>/dev/null; then
-  eval "$(rbenv init -)"
+  # Commands that support cd integration
+  if [[ "$cmd" == "switch" || "$cmd" == "new" || "$cmd" == "add" ]]; then
+    local stderr_file
+    stderr_file=$(mktemp)
+
+    # Run command with shell integration flag
+    # Capture stderr to file, filter out marker before displaying
+    WORKTREE_SHELL_INTEGRATION=1 "/Users/samreh/src/minutebook/bin/worktree" "$@" 2> >(
+      while IFS= read -r line; do
+        echo "$line" >> "$stderr_file"
+        # Don't display the marker line to the user
+        if [[ "$line" != "__WORKTREE_CD__:"* ]]; then
+          echo "$line" >&2
+        fi
+      done
+    )
+    local exit_code=$?
+
+    # Extract cd path from marker
+    local cd_path
+    cd_path=$(grep -o '__WORKTREE_CD__:.*' "$stderr_file" 2>/dev/null | cut -d: -f2-)
+    rm -f "$stderr_file"
+
+    if [ $exit_code -eq 0 ] && [ -n "$cd_path" ] && [ -d "$cd_path" ]; then
+      echo ""
+      echo "Changing to: $cd_path"
+      cd "$cd_path" || return 1
+    fi
+    return $exit_code
+  else
+    # Pass through to bin/worktree for other commands
+    "/Users/samreh/src/minutebook/bin/worktree" "$@"
+  fi
+}
+export PATH="$HOME/.dotnet:$PATH"
+
+# Auto-start tmux
+if [[ -z "$TMUX" ]]; then
+  tmux new-session -A -s main
 fi
-
-bindkey -v
-bindkey "^R" history-incremental-search-backward
-
-# Customize to your needs...
-export PATH=$PATH:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-eval `/usr/libexec/path_helper -s`
-
-source /usr/local/share/zsh/site-functions/_aws
-
-export PATH=$GOPATH/bin:$PATH
-
-export PYENV_ROOT="/usr/local/var/pyenv"
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-alias edit=nvim
-alias today='vimr ~/Drive/Notes/$(date +'%m-%d-%Y').txt'
-
-function kpodnames() {
-  kubectl get pods --selector=app=$1 -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'
-}
-
-function kpf() {
-  kubectl port-forward $(kpodnames $1 | head -1) $2
-}
-
-compctl -k "(br co reviewed delete branch checkout)"
-
-source $ZSH/oh-my-zsh.sh
-source $HOME/.profile
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-export NVM_DIR="$HOME/.nvm"
-
-[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
-export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/samuelreh/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/samuelreh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH="/usr/local/opt/gettext/bin:$PATH"

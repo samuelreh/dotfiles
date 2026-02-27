@@ -1,6 +1,19 @@
+[github]
+  user = samuelreh
+
 [user]
-	name = Sam Reh
-	email = samuel@clir.eco
+  name = Sam Reh
+  email = sam@getwalter.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOii2u6HBOOQCIIgCXYJ3wwoMoNarwC2RVpyN6KWRKTl
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
 
 [alias]
   st = status
@@ -56,20 +69,16 @@
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesFile = ~/.gitignore
-	editor = /usr/local/bin/nvim
+	editor = nvim
 	autocrlf = false
-[github]
-  user = samuelreh
-
 [push]
-	default = current
-[url "https://"]
-  insteadOf = git://
-[url "https://git.heroku.com/"]
-  insteadOf = ssh://git@heroku.com/
+  default = current
 [branch]
-	autosetuprebase = always
-[credential]
-	helper = osxkeychain
+  autosetuprebase = always
 [pull]
-	rebase = true
+  rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

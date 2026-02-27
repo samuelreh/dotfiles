@@ -1,33 +1,41 @@
-cutstring="DO NOT EDIT BELOW THIS LINE"
+#!/bin/bash
+set -e
 
-for name in *; do
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Files that get symlinked to ~/.<name>
+files=(gitconfig gitignore zshrc zprofile tmux.conf)
+
+# Config directories that get symlinked to ~/.config/<name>
+config_dirs=(nvim ghostty)
+
+for name in "${files[@]}"; do
   target="$HOME/.$name"
-  if [ -e "$target" ]; then
-    if [ ! -L "$target" ]; then
-      cutline=`grep -n -m1 "$cutstring" "$target" | sed "s/:.*//"`
-      if [ -n "$cutline" ]; then
-cutline=$((cutlinee-1))
-        echo "Updating $target"
-        head -n $cutline "$target" > update_tmp
-        startline=`sed '1!G;h;$!d' "$name" | grep -n -m1 "$cutstring" | sed "s/:.*//"`
-        if [ -n "$startline" ]; then
-          tail -n $startline "$name" >> update_tmp
-        else
-          cat "$name" >> update_tmp
-        fi
-        mv update_tmp "$target"
-      else
-        echo "WARNING: $target exists but is not a symlink."
-      fi
-    fi
-  else
-    if [ "$name" != 'install.sh' ]; then
-      echo "Creating $target"
-      if [ -n "$(grep "$cutstring" "$name")" ]; then
-        cp "$PWD/$name" "$target"
-      else
-        ln -s "$PWD/$name" "$target"
-      fi
-    fi
+  source="$DOTFILES_DIR/$name"
+  if [ -L "$target" ]; then
+    echo "Updating symlink $target"
+    rm "$target"
+  elif [ -e "$target" ]; then
+    echo "Backing up $target to $target.bak"
+    mv "$target" "$target.bak"
   fi
+  ln -s "$source" "$target"
+  echo "Linked $target -> $source"
 done
+
+mkdir -p "$HOME/.config"
+for name in "${config_dirs[@]}"; do
+  target="$HOME/.config/$name"
+  source="$DOTFILES_DIR/config/$name"
+  if [ -L "$target" ]; then
+    echo "Updating symlink $target"
+    rm "$target"
+  elif [ -e "$target" ]; then
+    echo "Backing up $target to $target.bak"
+    mv "$target" "$target.bak"
+  fi
+  ln -s "$source" "$target"
+  echo "Linked $target -> $source"
+done
+
+echo "Done!"
