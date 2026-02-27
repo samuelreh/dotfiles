@@ -1,17 +1,6 @@
 # Dotfiles
 
 Personal dotfiles for macOS development environment. Manages shell, git, Neovim, tmux, and terminal configuration.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Shell (Zsh)](#shell-zsh)
-- [Git](#git)
-- [Neovim](#neovim)
-- [Tmux](#tmux)
-- [Ghostty](#ghostty)
-- [Prerequisites](#prerequisites)
-
 ## Installation
 
 ```bash
