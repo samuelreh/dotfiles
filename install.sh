@@ -7,7 +7,7 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 files=(gitconfig gitignore zshrc zprofile tmux.conf)
 
 # Config directories that get symlinked to ~/.config/<name>
-config_dirs=(nvim ghostty starship)
+config_dirs=(nvim ghostty)
 
 for name in "${files[@]}"; do
   target="$HOME/.$name"

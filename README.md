@@ -17,13 +17,13 @@ The install script symlinks dotfiles to `~/.<name>` and config directories to `~
 
 **Symlinked files:** `gitconfig`, `gitignore`, `zshrc`, `zprofile`, `tmux.conf`
 
-**Symlinked config dirs:** `nvim`, `ghostty`, `starship`
+**Symlinked config dirs:** `nvim`, `ghostty`
 
 **Brewfile:** Run `brew bundle` to install all dependencies (see `Brewfile` for the full list).
 
 ## Shell (Zsh)
 
-Uses [Oh My Zsh](https://ohmyz.sh/) with [Starship](https://starship.rs/) prompt (git status, language versions, command duration).
+Uses [Oh My Zsh](https://ohmyz.sh/) with a minimal custom prompt (cyan directory, yellow `✗` indicator).
 
 **Plugins:** `git`, `zsh-autosuggestions`, `zsh-syntax-highlighting`
 
@@ -193,7 +193,6 @@ All prerequisites can be installed via `brew bundle` (see `Brewfile`).
 
 - macOS (Apple Silicon / Homebrew in `/opt/homebrew`)
 - [Oh My Zsh](https://ohmyz.sh/)
-- [Starship](https://starship.rs/)
 - [Neovim](https://neovim.io/)
 - [Ghostty](https://ghostty.org/)
 - [tmux](https://github.com/tmux/tmux) + [TPM](https://github.com/tmux-plugins/tpm)

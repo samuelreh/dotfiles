@@ -8,7 +8,6 @@ brew "fzf"            # Fuzzy finder
 brew "ripgrep"        # Fast grep (used by Neovim pickers)
 brew "direnv"         # Per-directory environment variables
 brew "git-lfs"        # Git Large File Storage
-brew "starship"       # Cross-shell prompt
 
 # Git
 brew "git-delta"      # Syntax-highlighted git diffs

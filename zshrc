@@ -9,6 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME=""
+PROMPT='%F{cyan}%1~%f %B%F{yellow}✗%f%b '
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -161,8 +162,6 @@ wt() {
 export PATH="$HOME/.dotnet:$PATH"
 
 eval "$(zoxide init zsh)"
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-eval "$(starship init zsh)"
 
 # Auto-start tmux
 if [[ -z "$TMUX" ]]; then
