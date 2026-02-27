@@ -100,8 +100,6 @@ Uses [LazyVim](https://www.lazyvim.org/) with [lazy.nvim](https://github.com/fol
 | stevearc/conform.nvim | Formatting (rubocop via mise) |
 | mfussenegger/nvim-lint | Linting (rubocop, erb_lint via mise) |
 
-**Disabled plugins:** `noice.nvim` (to fix `:!` command escape codes), `telescope.nvim` (replaced by snacks picker)
-
 **Custom keymaps:**
 
 | Mapping | Action |
@@ -176,6 +174,18 @@ Prefix key: `C-a`
 - **Font:** FiraCode Nerd Font Light, size 12.5
 - **Theme:** Catppuccin Mocha
 - **macOS:** Option key acts as Alt
+
+## Planned Work
+
+Recommendations for improving the current setup.
+
+### Code Review Workflow
+
+The current diffview setup (`<leader>gd` to open, `<leader>gD` to close) works well for editing within diffs but requires multiple steps to start a review. Consider these improvements:
+
+- **Shell alias for PR review** — Add a shell function like `review() { nvim -c "DiffviewOpen origin/main...HEAD" }` to jump straight into a diffview session from the terminal. Optionally accept a branch arg: `review origin/main`.
+- **[octo.nvim](https://github.com/pwntester/octo.nvim)** — Full GitHub PR review workflow inside Neovim: view PR diffs, read/write comments, approve/request changes, and merge — all without leaving the editor.
+- **[gh-dash](https://github.com/dlvhdr/gh-dash)** — Terminal dashboard for GitHub PRs and issues with fuzzy search. Could serve as the entry point that launches nvim+diffview for the selected PR.
 
 ## Prerequisites
 
