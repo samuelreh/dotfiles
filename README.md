@@ -2,6 +2,13 @@
 
 Personal dotfiles for macOS development environment. Manages shell configuration, git settings, and Neovim setup.
 
+## Table of Contents
+
+- [Shell (Zsh)](#shell-zsh)
+- [Git](#git)
+- [Neovim](#neovim)
+- [Prerequisites](#prerequisites)
+
 ## Shell (Zsh)
 
 Uses [Oh My Zsh](https://ohmyz.sh/) with the `zhann` theme.
