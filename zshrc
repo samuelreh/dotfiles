@@ -71,7 +71,7 @@ PROMPT='%F{cyan}%1~%f %B%F{yellow}✗%f%b '
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,7 +109,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 set -o vi
 
-eval "$(rbenv init - zsh)"
+eval "$(mise activate zsh)"
 
 # fzf shell integration (Homebrew)
 source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
@@ -160,6 +160,8 @@ wt() {
   fi
 }
 export PATH="$HOME/.dotnet:$PATH"
+
+eval "$(zoxide init zsh)"
 
 # Auto-start tmux
 if [[ -z "$TMUX" ]]; then

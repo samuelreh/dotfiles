@@ -37,6 +37,7 @@
   pom = push origin master
   br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 	dfw = diff --ignore-space-change
+  absorb = !git-absorb
 
 [format]
   pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
@@ -74,6 +75,18 @@
 	excludesFile = ~/.gitignore
 	editor = nvim
 	autocrlf = false
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+  syntax-theme = Catppuccin Mocha
+
+[merge]
+  conflictstyle = zdiff3
 [push]
   default = current
 [branch]
